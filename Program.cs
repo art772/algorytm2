@@ -37,6 +37,7 @@ while (i < lessonList.Count)
                 classList.Remove((c.Item1, c.Item2));
             }
         }
+        
         foreach (var c in classList.ToList())
         {
             if (startLesson < c.Item2)
