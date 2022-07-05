@@ -3,7 +3,8 @@ using System.Collections.Generic;
 //List<(int, int)> lessonList = new List<(int, int)>() { (30, 75), (0, 50), (60, 150) };  //  2
 //List<(int, int)> lessonList = new List<(int, int)>() { (0, 75), (0, 35), (40, 90), (20, 70) };    //  3
 //List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 40), (20, 60), (30, 60), (30, 50), (40, 100) }; //  4
-List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 30), (20, 60), (30, 60) };  //  3 
+//List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 30), (20, 60), (30, 60) };  //  3 
+List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 30), (20, 60), (30, 60), (80, 100) };  //  3
 
 List<(int, int)> classList = new List<(int, int)>();
 
@@ -11,6 +12,7 @@ lessonList.Sort();
 
 int startLesson;
 int stopLesson;
+int classCount = 0;
 
 int i = 0;
 
@@ -22,6 +24,8 @@ while (i < lessonList.Count)
     if (i == 0)
     {
         classList.Add((startLesson, stopLesson));
+        
+        classCount++;
     }
     else
     {
@@ -32,22 +36,25 @@ while (i < lessonList.Count)
          */
         foreach (var c in classList.ToList())
         {
-            if (c.Item2 == startLesson)
+            if (startLesson == c.Item2)
             {
                 classList.Remove((c.Item1, c.Item2));
+                classCount--;
             }
         }
-        
+
         foreach (var c in classList.ToList())
         {
             if (startLesson < c.Item2)
             {
                 classList.Add((startLesson, stopLesson));
+                classCount++;
                 break;
             }
             else if (startLesson == c.Item2)
             {
                 classList.Add((startLesson, stopLesson));
+                classCount++;
                 break;
             }
             else
@@ -58,4 +65,4 @@ while (i < lessonList.Count)
     }
     i++;
 }
-Console.WriteLine(classList.Count);
+Console.WriteLine(classCount);
