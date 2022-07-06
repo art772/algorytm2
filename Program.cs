@@ -4,7 +4,8 @@ using System.Collections.Generic;
 //List<(int, int)> lessonList = new List<(int, int)>() { (0, 75), (0, 35), (40, 90), (20, 70) };    //  3
 //List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 40), (20, 60), (30, 60), (30, 50), (40, 100) }; //  4
 //List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 30), (20, 60), (30, 60) };  //  3 
-List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 30), (20, 60), (30, 60), (80, 100) };  //  3
+//List<(int, int)> lessonList = new List<(int, int)>() { (0, 40), (0, 20), (20, 30), (20, 60), (30, 60), (80, 100) };  //  3
+List<(int, int)> lessonList = new List<(int, int)>() { (0, 20), (30, 50), (60, 70), (80, 100) };  //  1
 
 List<(int, int)> classList = new List<(int, int)>();
 
@@ -45,13 +46,7 @@ while (i < lessonList.Count)
 
         foreach (var c in classList.ToList())
         {
-            if (startLesson < c.Item2)
-            {
-                classList.Add((startLesson, stopLesson));
-                classCount++;
-                break;
-            }
-            else if (startLesson == c.Item2)
+            if (startLesson <= c.Item2)
             {
                 classList.Add((startLesson, stopLesson));
                 classCount++;
